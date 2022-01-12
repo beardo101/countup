@@ -1,5 +1,6 @@
 from time import sleep
 from os import system, name
+import keyboard
 
 count = []
 def clear():
@@ -17,11 +18,19 @@ def countup():
         global count
         clear()
         count += 1
-        f = open("count.txt", "w")
-        f.write(str(count))
-        f.close()
+
         print(count)
+        print("press q to quit")
         sleep(.1)
+        if keyboard.is_pressed('q'):
+            print("CountUp will exit")
+            f = open("count.txt", "w")
+            f.write(str(count))
+            f.close()
+            sleep(3)
+            break
+        else:
+            pass
 
 
 
